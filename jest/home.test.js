@@ -19,9 +19,3 @@ test("Get data user 3", function () {
 
     expect(result).toEqual({ name: 'Rizat', age: 23 })
 });
-
-test("Get data user 4", function () {
-    const result = homeService.getDataUser();
-
-    expect(result).toEqual({ name: 'Rizat', age: 23 })
-});

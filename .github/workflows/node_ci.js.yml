@@ -1,0 +1,33 @@
+name: Node.js CI
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0.32
+        env:
+          MYSQL_ROOT_PASSWORD: qwertymysql
+          MYSQL_DATABASE: db_docker
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - run: npm install
+      - run: npx sequelize db:migrate
+      - run: npm test

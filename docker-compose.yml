@@ -20,6 +20,7 @@ services:
       - mysqlv8
     environment:
       - HOST=0.0.0.0
+      - PORT=5001
       - DB_HOST=mysqlv8
       - DB_PORT=3306
       - DB_USER=root

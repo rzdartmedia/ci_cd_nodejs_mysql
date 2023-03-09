@@ -27,13 +27,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-        env:
-          DB_HOST: localhost
-          DB_PORT: 3306
-          DB_USER: root
-          DB_PASSWORD: qwertymysql
-          DB_NAME: db_docker
-          DB_TYPE: mysql
       - run: npm install
       - name: Run database migration
         env:
@@ -44,7 +37,7 @@ jobs:
           DB_NAME: db_docker
           DB_TYPE: mysql
         run: npx sequelize db:migrate
-      - name: Running test
+      - name: Run testing
         env:
           DB_HOST: localhost
           DB_PORT: 3306

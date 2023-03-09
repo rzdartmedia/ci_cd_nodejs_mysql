@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: 16.x
       - run: npm install
-      - name: Run database migration and testing
+      - name: Run database migration
         env:
           DB_HOST: localhost
           DB_PORT: 3306

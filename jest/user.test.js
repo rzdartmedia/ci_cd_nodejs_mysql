@@ -24,4 +24,10 @@ test("Get data user dari database ketika terdapat datanya", async function () {
     const result = await userService.getDataUser();
 
     expect(result.length > 0).toBe(true);
+});
+
+test("Get data user pertama dari database", async function () {
+    const result = await userService.getDataUser();
+
+    expect(result[0].name).toBe('Rizat Sakmir');
 })

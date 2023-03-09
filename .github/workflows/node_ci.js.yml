@@ -34,6 +34,7 @@ jobs:
           DB_PASSWORD: qwertymysql
           DB_NAME: db_docker
           DB_TYPE: mysql
+      - run: npm install
       - name: Run database migration
         env:
           DB_HOST: localhost
@@ -42,6 +43,5 @@ jobs:
           DB_PASSWORD: qwertymysql
           DB_NAME: db_docker
           DB_TYPE: mysql
-      - run: npm install
-      - run: npx sequelize db:migrate
+        run: npx sequelize db:migrate
       - run: npm test

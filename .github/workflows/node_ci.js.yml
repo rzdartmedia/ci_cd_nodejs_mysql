@@ -37,7 +37,7 @@ jobs:
           DB_NAME: db_docker
           DB_TYPE: mysql
       - run: npm install
-      - name: Run database migration
+      - name: Run database migration and testing
         env:
           DB_HOST: localhost
           DB_PORT: 3306
@@ -46,12 +46,4 @@ jobs:
           DB_NAME: db_docker
           DB_TYPE: mysql
         run: npx sequelize db:migrate
-      - name: Running test
-        env:
-          DB_HOST: localhost
-          DB_PORT: 3306
-          DB_USER: root
-          DB_PASSWORD: qwertymysql
-          DB_NAME: db_docker
-          DB_TYPE: mysql
         run: npm test

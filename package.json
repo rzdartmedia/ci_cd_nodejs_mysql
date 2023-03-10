@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src/server",
-    "test": "npx jest --detectOpenHandles"
+    "test": "npx jest --verbose --detectOpenHandles"
   },
   "author": "Rizat Sakmir",
   "license": "ISC",

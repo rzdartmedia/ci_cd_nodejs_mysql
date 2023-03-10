@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: 16.x
       - run: npm install
-      - name: Run database migration and test
+      - name: Run database migration
         env:
           DB_HOST: localhost
           DB_PORT: 3306
@@ -37,4 +37,14 @@ jobs:
           DB_NAME: ${{ secrets.DB_NAME }}
           DB_TYPE: mysql
         run: npx sequelize db:migrate
+      - name: Run testing
+        env:
+          HOST: localhost
+          PORT: 5001
+          DB_HOST: localhost
+          DB_PORT: 3306
+          DB_USER: root
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_TYPE: mysql
         run: npm test
